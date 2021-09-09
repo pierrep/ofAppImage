@@ -85,11 +85,12 @@ The final step is to build your AppImage with the following command, which will 
 `./appimagetool-x86_64.AppImage ./appname-dir/`
 
 The final AppImage will be called something like `appname-x86_64.AppImage`.
+
 Make it executable by running `chmod a+x appname-x86_64.AppImage` and you are good to go!
 
 ### Troubleshooting
 If you want to take a look at the directory structure and files of your appimage, you can extract it as follows:
-`appname --appimage-extract`
+`appname-x86_64.AppImage --appimage-extract`
 
 If you want to certify your AppImage, download the linting tool at https://github.com/TheAssassin/appimagelint
 Then you can run `./appimagelint-x86_64.AppImage ./appname-x86_64.AppImage` to receive a report of the integrity of your AppImage.
