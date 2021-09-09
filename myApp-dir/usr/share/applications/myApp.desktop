@@ -1,0 +1,8 @@
+[Desktop Entry]
+Categories=AudioVideo;
+Type=Application
+Icon=myApp
+Name=myApp
+Comment="myApp application"
+Exec=myApp
+StartupWMClass=MYAPP

@@ -44,6 +44,7 @@ chmod a+x appimagetool-x86_64.AppImage
 ### Install openFrameworks
 Download openFrameworks 0.11.2, or whatever is the current version.
 Proceed to extract the downloaded OF drectory, then run the scripts in "openFrameworks"/scripts/ubuntu/
+
 Make sure to edit the `install_dependencies.sh` script first. Open it up with your favourite editor and search for the text:
 ```
 libgl1-mesa-dev${XTAG}
@@ -62,4 +63,34 @@ This should install all the required dependencies.
 Fetch your application code, typically from a version control system like git.
 Compile it as an openFrameworks app, either using `Make` or whatever your preferred IDE is.
 
+### Clone the AppImage directory using the provided script
+Run the `rename-appimage.sh` bash script, and pass as a parameter the name of the app you compiled in the previous step, which will become the project name.
+The second parameter the script takes is the default directory structure provided in this repository.
+Run the script as follows:
+
+```
+$ ./rename-appimage.sh appname myApp-dir
+```
+where "appname" is your application name.
+
+### Copy your compiled application
+Copy your app into the now cloned AppImage directory created by the shell script. 
+It will be called `appname-dir`, and you should copy the compiled OF binary as well as the `data` directory into the `./appname-dir/usr/bin/` directory.
+Delete the existing `myApp` binary that's in that folder, as your application will now replace it.
+
+### Build the AppImage
+Download the appimagetool from here: https://github.com/AppImage/AppImageKit/releases
+
+The final step is to build your AppImage with the following command, which will depend on the exact name of the appimagetool, e.g.
+`./appimagetool-x86_64.AppImage ./_appname_-dir/`
+
+The final AppImage will be called something like `appname-x86_64.AppImage`.
+Make it executable by running `chmod a+x appname-x86_64.AppImage` and you are good to go!
+
+### Troubleshooting
+If you want to take a look at the directory structure and files of your appimage, you can extract it as follows:
+`_appname_ --appimage-extract`
+
+If you want to certify your AppImage, download the linting tool at https://github.com/TheAssassin/appimagelint
+Then you can run `./appimagelint-x86_64.AppImage ./appname-x86_64.AppImage` to receive a report of the integrity of your AppImage.
 
