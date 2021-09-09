@@ -7,7 +7,7 @@ To see what GLIBC your version of Linux has (provided you have development tools
 ```
 ldd --version
 ```
-All of the steps below, apart from the initial installation, up until _*Clone the AppImage directory using the provided script*_, will take place in a Virtual Machine running Ubuntu 16.04.
+All of the steps below, apart from the initial installation, up until *_Clone the AppImage directory using the provided script_*, will take place in a Virtual Machine running Ubuntu 16.04.
 
 ## Prerequisites
 
