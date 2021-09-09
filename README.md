@@ -64,7 +64,7 @@ Fetch your application code, typically from a version control system like git.
 Compile it as an openFrameworks app, either using `Make` or whatever your preferred IDE is.
 
 ### Clone the AppImage directory using the provided script
-Run the `rename-appimage.sh` bash script, and pass as a parameter the name of the app you compiled in the previous step, which will become the project name.
+Back on your host system (not on the VM) run the `rename-appimage.sh` bash script, and pass as a parameter the name of the app you compiled in the previous step, which will become the project name.
 The second parameter the script takes is the default directory structure provided in this repository.
 Run the script as follows:
 
@@ -74,7 +74,7 @@ $ ./rename-appimage.sh appname myApp-dir
 where "appname" is your application name.
 
 ### Copy your compiled application
-Copy your app into the now cloned AppImage directory created by the shell script. 
+Copy your app compiled on the 16.04 VM into the now cloned AppImage directory created by the shell script, on your host machine. 
 It will be called `appname-dir`, and you should copy the compiled OF binary as well as the `data` directory into the `./appname-dir/usr/bin/` directory.
 Delete the existing `myApp` binary that's in that folder, as your application will now replace it.
 
