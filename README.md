@@ -9,7 +9,7 @@ The summary of steps are:
 - Copy across the ‘app’ binary and ‘data’ directory from the VM, and paste it in the new AppImage directory structure
 - Use the official ‘appimagetool’ to build the AppImage
 
-The bulk of the work is setting up the VM. Once that’s done, just run the shell script and voila! You have a shiny new AppImage that basically will work with any OF app and will work with Linux distros at least as old as Ubuntu 16.04, which was from 2016.
+The bulk of the work is setting up the VM. Once that’s done, just run a couple of terminal commands and voila! You have a shiny new AppImage that basically will work with any OF app and will work with Linux distros at least as old as Ubuntu 16.04, which was from 2016.
 
 ### Caveats
 If you use 3rd party libraries, you will need to app them yourself. Currently this AppImage structure supports all OF functionality under Linux, including GStreamer…so that means audio, video, OpenCV etc.
