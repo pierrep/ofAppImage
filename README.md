@@ -1,15 +1,31 @@
 # ofAppImage
 
-This project assists in the creation of AppImages for openFrameworks on 64-bit X86 Linux.
+This project assists in the creation of AppImages for [openFrameworks](https://openframeworks.cc/) on 64-bit X86 Linux.
+
+The summary of steps are:
+
+- Compile your OF app in an Ubuntu 16.04 Virtual Machine
+- On your host machine, run the provided shell script with your ‘app name’ and the provided directory as arguments
+- Copy across the ‘app’ binary and ‘data’ directory from the VM, and paste it in the new AppImage directory structure
+- Use the official ‘appimagetool’ to build the AppImage
+
+The bulk of the work is setting up the VM. Once that’s done, just run the shell script and voila! You have a shiny new AppImage that basically will work with any OF app and will work with Linux distros at least as old as Ubuntu 16.04, which was from 2016.
+
+### Caveats
+If you use 3rd party libraries, you will need to app them yourself. Currently this AppImage structure supports all OF functionality under Linux, including GStreamer…so that means audio, video, OpenCV etc.
+
+If you run into any issues or want to add any more libraries, let me know. This is meant to be a generic AppImage structure specifically made for OF, so if I’ve missed some libraries, I’ll be happy to add them.
+
+### A Note About GLIBC
 The AppImages created from this guide should run on all Linux distros that have GLIBC of a version equal to or greater than 2.23, which should be most distros released from around 2016 onwards.
 
 To see what GLIBC your version of Linux has (provided you have development tools installed), type this in a terminal:
 ```
 ldd --version
 ```
-All of the steps below up until *_Clone the AppImage directory using the provided script_*, will take place in a Virtual Machine running Ubuntu 16.04.
 
 ## Prerequisites
+All of the steps below up until *_Clone the AppImage directory using the provided script_*, will take place in a Virtual Machine running Ubuntu 16.04.
 
 ### VirtualBox running Ubuntu 16.04
 First you need to install a Virtual Machine running Ubuntu 16.04.
