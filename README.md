@@ -12,7 +12,7 @@ The summary of steps are:
 The bulk of the work is setting up the VM. Once that’s done, just run a couple of terminal commands and voila! You have a shiny new AppImage that basically will work with any OF app and will work with Linux distros at least as old as Ubuntu 16.04, which was from 2016.
 
 ### Caveats
-If you use 3rd party libraries, you will need to app them yourself. Currently this AppImage structure supports all OF functionality under Linux, including GStreamer…so that means audio, video, OpenCV etc.
+If you use 3rd party libraries, you will need to add them yourself. Currently this AppImage structure supports all OF functionality under Linux, including GStreamer…so that means audio, video, OpenCV etc.
 
 If you run into any issues or want to add any more libraries, let me know. This is meant to be a generic AppImage structure specifically made for OF, so if I’ve missed some libraries, I’ll be happy to add them.
 
