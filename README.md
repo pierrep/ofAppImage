@@ -53,6 +53,7 @@ Compile it as an openFrameworks app, either using `Make` or whatever your prefer
 
 
 ## Building the AppImage
+The following steps take place on the host computer, apart from the copying of the compiled binary.
 
 ### Clone the AppImage directory using the provided script
 Back on your host system (not on the VM) run the `rename-appimage.sh` bash script, and pass as a parameter the name of the app you compiled in the previous step, which will become the project name.
