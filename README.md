@@ -7,7 +7,7 @@ To see what GLIBC your version of Linux has (provided you have development tools
 ```
 ldd --version
 ```
-All of the steps below, apart from the initial installation, up until *_Clone the AppImage directory using the provided script_*, will take place in a Virtual Machine running Ubuntu 16.04.
+All of the steps below up until *_Clone the AppImage directory using the provided script_*, will take place in a Virtual Machine running Ubuntu 16.04.
 
 ## Prerequisites
 
@@ -27,18 +27,6 @@ sudo apt-get update && \
 sudo apt-get install gcc-6 g++-6 -y && \
 sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-6 60 --slave /usr/bin/g++ g++ /usr/bin/g++-6 && \
 gcc -v
-```
-
-### Download the appimagetool
-Download the appimagetool, it is the application that actually creates the AppImage once your directory structure is ready:
-
-https://github.com/AppImage/AppImageKit/releases
-
-I used the appimagetool-x86_64.AppImage release.
-Then make it executable:
-
-```
-chmod a+x appimagetool-x86_64.AppImage
 ```
 
 ### Install openFrameworks
@@ -63,6 +51,9 @@ This should install all the required dependencies.
 Fetch your application code, typically from a version control system like git.
 Compile it as an openFrameworks app, either using `Make` or whatever your preferred IDE is.
 
+
+## Building the AppImage
+
 ### Clone the AppImage directory using the provided script
 Back on your host system (not on the VM) run the `rename-appimage.sh` bash script, and pass as a parameter the name of the app you compiled in the previous step, which will become the project name.
 The second parameter the script takes is the default directory structure provided in this repository.
@@ -78,16 +69,46 @@ Copy your app compiled on the 16.04 VM into the now cloned AppImage directory cr
 It will be called `appname-dir`, and you should copy the compiled OF binary as well as the `data` directory into the `./appname-dir/usr/bin/` directory.
 Delete the existing `myApp` binary that's in that folder, as your application will now replace it.
 
-### Build the AppImage
-Download the appimagetool from here: https://github.com/AppImage/AppImageKit/releases
+### Download the appimagetool
+Download the appimagetool, it is the application that actually creates the AppImage once your directory structure is ready:
 
-The final step is to build your AppImage with the following command, which will depend on the exact name of the appimagetool, e.g.
-`./appimagetool-x86_64.AppImage ./appname-dir/`
+https://github.com/AppImage/AppImageKit/releases
+
+I used the appimagetool-x86_64.AppImage release.
+Then make it executable:
+
+```
+chmod a+x appimagetool-x86_64.AppImage
+```
+
+### Build the AppImage
+The final step is to build your AppImage with the appimagetool. Use the following command, which will depend on the exact name of the appimagetool, e.g.
+```
+./appimagetool-x86_64.AppImage ./appname-dir/
+```
 
 The final AppImage will be called something like `appname-x86_64.AppImage`.
 
 Make it executable by running `chmod a+x appname-x86_64.AppImage` and you are good to go!
 If you want further integration into the desktop, have a look at https://github.com/TheAssassin/AppImageLauncher/releases
+
+### (optional) Creating an Icon
+
+The best way to set an icon for your app is to do it internally. Include the following code in your main.cpp, and put an appropriate icon file in your `data/assets` folder (or whereever you prefer):
+
+```
+    ofApp *app = new ofApp();
+
+    //Need to make setWindowIcon public in libs/openFrameworks/app/ofAppGLFWWindow.h to work
+    ofAppGLFWWindow* win;
+    win = dynamic_cast<ofAppGLFWWindow *> (ofGetWindowPtr());
+    win->setWindowIcon("assets/icon_64x64.png");
+
+    ofRunApp(app);
+```
+The other icon found inside the AppImage structure (the myApp.svg that gets renamed to _appname.svg_) is useful if you want to take advantage of Desktop integration tools for AppImage, such as the AppImageLauncher mentioned above. You can use the default OF icon provided, or make up your own using a vector graphic tool like Inkscape.
+
+Note: currently the setWindowIcon() method above is private - there's a pull request active to remedy this - https://github.com/openframeworks/openFrameworks/pull/6759
 
 
 ### Troubleshooting
