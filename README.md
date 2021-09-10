@@ -1,6 +1,6 @@
 # ofAppImage
 
-This project assists in the creation of AppImages for openFrameworks on Linux.
+This project assists in the creation of AppImages for openFrameworks on 64-bit X86 Linux.
 The AppImages created from this guide should run on all Linux distros that have GLIBC of a version equal to or greater than 2.23, which should be most distros released from around 2016 onwards.
 
 To see what GLIBC your version of Linux has (provided you have development tools installed), type this in a terminal:
