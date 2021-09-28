@@ -111,7 +111,7 @@ If you want further integration into the desktop, have a look at https://github.
 
 ### (optional) Creating an Icon
 
-The best way to set an icon for your app is to do it internally. Include the following code in your main.cpp, and put an appropriate icon file in your `data/assets` folder (or whereever you prefer):
+The best way to set an icon for your app is to do it internally. Include the following code in your main.cpp, and put an appropriate icon file in your `data/assets` folder (or wherever you prefer):
 
 ```
     ofApp *app = new ofApp();
