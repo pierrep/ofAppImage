@@ -1,6 +1,6 @@
 # ofAppImage
 
-This project assists in the creation of AppImages for [openFrameworks](https://openframeworks.cc/) on 64-bit X86 Linux.
+This project assists in the creation of AppImages for [openFrameworks](https://openframeworks.cc/) on 64-bit x86 Linux.
 
 The summary of steps are:
 
@@ -125,7 +125,7 @@ The best way to set an icon for your app is to do it internally. Include the fol
 ```
 The other icon found inside the AppImage structure (the myApp.svg that gets renamed to _appname.svg_) is useful if you want to take advantage of Desktop integration tools for AppImage, such as the AppImageLauncher mentioned above. You can use the default OF icon provided, or make up your own using a vector graphic tool like Inkscape.
 
-Note: currently the setWindowIcon() method above is private - there's a pull request active to remedy this - https://github.com/openframeworks/openFrameworks/pull/6759
+Note: currently in official releases the setWindowIcon() method above is private - this has been fixed in the latest master branch
 
 
 ### Troubleshooting
